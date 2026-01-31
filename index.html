@@ -1,0 +1,872 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Do Bem Marmitas | Comida com Propósito</title>
+  <meta name="description" content="Marmitas saudáveis 100% natural, sem industrializados, sem glúten e sem lactose. Peça pelo WhatsApp." />
+
+  <style>
+    :root{
+      --bg:#0b0f0d;
+      --card:#0f1512;
+      --card2:#101a15;
+      --text:#e9f1ec;
+      --muted:#a7b4ad;
+      --line:rgba(255,255,255,.08);
+      --green:#22c55e;
+      --green2:#16a34a;
+      --shadow:0 18px 50px rgba(0,0,0,.45);
+      --radius:18px;
+      --max:1120px;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 10% -5%, rgba(34,197,94,.18), transparent 60%),
+        radial-gradient(900px 520px at 90% 0%, rgba(34,197,94,.10), transparent 60%),
+        var(--bg);
+      overflow-x:hidden;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .container{width:min(92%, var(--max)); margin:0 auto}
+
+    /* Header */
+    header{
+      position:sticky; top:0; z-index:50;
+      background: rgba(11,15,13,.72);
+      backdrop-filter: blur(12px);
+      border-bottom:1px solid var(--line);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      padding:14px 0; gap:12px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:10px;
+      font-weight:950; letter-spacing:.2px;
+      white-space:nowrap;
+    }
+    .logo{
+      width:40px; height:40px;
+      border-radius:14px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, rgba(34,197,94,.35), rgba(34,197,94,.10));
+      border:1px solid rgba(34,197,94,.35);
+      box-shadow:0 12px 30px rgba(34,197,94,.10);
+      font-weight:1000;
+    }
+    .menu{
+      display:flex; align-items:center; gap:8px; flex-wrap:wrap;
+      justify-content:flex-end;
+      color:var(--muted);
+      font-weight:800;
+    }
+    .menu a{
+      padding:10px 12px;
+      border-radius:14px;
+      transition:.2s ease;
+    }
+    .menu a:hover{background: rgba(255,255,255,.06); color:var(--text)}
+    .menu .cta-mini{
+      border:1px solid rgba(34,197,94,.35);
+      background: rgba(34,197,94,.12);
+      color:var(--text);
+    }
+    .menu .cta-mini:hover{background: rgba(34,197,94,.18)}
+
+    /* Hero */
+    .hero{padding:34px 0 10px}
+    .hero-wrap{
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    .card{
+      border:1px solid var(--line);
+      background: rgba(15,21,18,.68);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .hero-main{
+      padding:26px;
+      min-height:360px;
+      background:
+        linear-gradient(90deg, rgba(11,15,13,.94) 0%, rgba(11,15,13,.62) 45%, rgba(11,15,13,.22) 78%),
+        url("https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1600&q=80");
+      background-size:cover;
+      background-position:center;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      gap:12px;
+    }
+    .kicker{
+      display:flex; gap:10px; flex-wrap:wrap;
+      align-items:center;
+      font-weight:900;
+      color: rgba(233,241,236,.92);
+    }
+    .pill{
+      display:inline-flex; align-items:center; gap:8px;
+      padding:7px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,197,94,.30);
+      background: rgba(34,197,94,.10);
+      color: rgba(233,241,236,.92);
+      font-size:12px;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+    h1{
+      margin:0;
+      font-size: clamp(28px, 4vw, 46px);
+      line-height:1.05;
+      letter-spacing:-0.02em;
+    }
+    .sub{
+      margin:0;
+      color: rgba(233,241,236,.86);
+      font-weight:650;
+      max-width: 60ch;
+    }
+    .hero-actions{display:flex; gap:12px; flex-wrap:wrap; margin-top:8px}
+    .btn{
+      appearance:none; border:none; cursor:pointer;
+      padding:13px 16px;
+      border-radius:14px;
+      font-weight:950;
+      display:inline-flex; align-items:center; justify-content:center; gap:10px;
+      min-height:46px;
+      transition: transform .15s ease, box-shadow .15s ease, background .15s ease;
+      user-select:none;
+    }
+    .btn:active{transform: translateY(1px)}
+    .btn-primary{
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color:#07110b;
+      box-shadow: 0 14px 34px rgba(34,197,94,.20);
+    }
+    .btn-primary:hover{box-shadow: 0 16px 40px rgba(34,197,94,.26)}
+    .btn-ghost{
+      background: rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--text);
+    }
+    .btn-ghost:hover{background: rgba(255,255,255,.09)}
+
+    .hero-side{padding:16px; display:flex; flex-direction:column; gap:12px}
+    .stat{
+      border:1px solid var(--line);
+      background: rgba(16,26,21,.55);
+      border-radius:16px;
+      padding:14px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .stat b{font-size:16px}
+    .stat span{color:var(--muted); font-weight:750}
+    .badge{
+      padding:8px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,197,94,.32);
+      background: rgba(34,197,94,.12);
+      font-weight:950;
+      white-space:nowrap;
+    }
+    .feature-strip{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:10px;
+    }
+    .mini{
+      border:1px solid var(--line);
+      background: rgba(16,26,21,.45);
+      border-radius:16px;
+      padding:12px;
+      font-weight:900;
+      color: rgba(233,241,236,.92);
+    }
+    .mini small{display:block; margin-top:4px; color:var(--muted); font-weight:750}
+
+    /* Sections */
+    section{padding:26px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between;
+      gap:14px; flex-wrap:wrap;
+      margin: 6px 0 14px;
+    }
+    .section-title h2{margin:0; font-size:22px; letter-spacing:-0.01em}
+    .section-title p{margin:0; color:var(--muted); font-weight:700; max-width:60ch}
+
+    /* Diferenciais */
+    .grid-4{display:grid; grid-template-columns: repeat(4, 1fr); gap:14px}
+    .info{
+      border:1px solid var(--line);
+      background: rgba(15,21,18,.68);
+      border-radius: var(--radius);
+      padding:14px;
+    }
+    .info b{display:block; margin-bottom:6px}
+    .info p{margin:0; color:var(--muted); font-weight:650; line-height:1.35}
+
+    /* Cardápio */
+    .grid-3{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .food{
+      border:1px solid var(--line);
+      background: rgba(15,21,18,.68);
+      border-radius: var(--radius);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      display:flex;
+      flex-direction:column;
+      min-height:100%;
+      transition: transform .18s ease, border-color .18s ease;
+    }
+    .food:hover{transform: translateY(-3px); border-color: rgba(34,197,94,.22)}
+    .food-img{
+      height: 165px;
+      background-size:cover;
+      background-position:center;
+      position:relative;
+    }
+    .food-img::after{
+      content:"";
+      position:absolute; inset:0;
+      background: linear-gradient(180deg, rgba(11,15,13,.0) 0%, rgba(11,15,13,.55) 100%);
+    }
+    .food-body{padding:14px; display:flex; flex-direction:column; gap:10px; flex:1}
+    .food-top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start}
+    .tag{
+      font-size:12px;
+      font-weight:950;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.05);
+      color: rgba(233,241,236,.92);
+      white-space:nowrap;
+    }
+    .desc{margin:0; color:var(--muted); font-weight:650; line-height:1.35}
+    .food-actions{
+      margin-top:auto;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:space-between;
+    }
+    .btn-small{
+      padding:11px 12px;
+      border-radius:12px;
+      min-height:42px;
+      font-weight:1000;
+      width: 46%;
+    }
+
+    /* Descontos */
+    .grid-3b{display:grid; grid-template-columns: repeat(3, 1fr); gap:14px}
+    .deal{
+      border:1px solid var(--line);
+      background: rgba(15,21,18,.68);
+      border-radius: var(--radius);
+      padding:16px;
+      box-shadow: var(--shadow);
+      position:relative;
+      overflow:hidden;
+    }
+    .deal .big{
+      font-size:34px; font-weight:1000; line-height:1;
+    }
+    .deal .off{
+      display:inline-block;
+      margin-top:8px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(34,197,94,.30);
+      background: rgba(34,197,94,.10);
+      font-weight:950;
+    }
+    .deal p{margin:10px 0 0; color:var(--muted); font-weight:650}
+    .deal .price{
+      margin-top: 12px;
+      font-weight:1000;
+      color: rgba(233,241,236,.95);
+    }
+    .popular{
+      border-color: rgba(34,197,94,.28);
+      background: linear-gradient(180deg, rgba(34,197,94,.08), rgba(15,21,18,.68));
+    }
+    .ribbon{
+      position:absolute;
+      top:12px; right:12px;
+      padding:6px 10px;
+      border-radius:999px;
+      background: rgba(34,197,94,.16);
+      border:1px solid rgba(34,197,94,.34);
+      font-weight:1000;
+    }
+    .deal .per{margin-top: 6px; color:var(--muted); font-weight:800}
+
+    /* Sobre */
+    .about{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    .about .box{padding:18px}
+    .kpis{display:grid; grid-template-columns: repeat(2, 1fr); gap:10px; margin-top:10px}
+    .kpi{
+      border:1px solid var(--line);
+      background: rgba(16,26,21,.45);
+      border-radius:16px;
+      padding:12px;
+    }
+    .kpi b{font-size:20px}
+    .kpi span{display:block; color:var(--muted); font-weight:750; margin-top:4px}
+
+    /* CTA final */
+    .cta{
+      border:1px solid var(--line);
+      background: linear-gradient(180deg, rgba(34,197,94,.10), rgba(15,21,18,.68));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .cta h3{margin:0; font-size:20px}
+    .cta p{margin:6px 0 0; color:var(--muted); font-weight:650; max-width:70ch}
+
+    /* Footer */
+    footer{
+      border-top:1px solid var(--line);
+      padding: 22px 0 92px;
+      color: var(--muted);
+    }
+    .foot{
+      display:grid;
+      grid-template-columns: 1.2fr .9fr .9fr;
+      gap:14px;
+    }
+    .foot b{color:var(--text)}
+    .links{display:flex; flex-direction:column; gap:8px; font-weight:750}
+    .links a{color:var(--muted)}
+    .links a:hover{color:var(--text)}
+    .fine{
+      margin-top: 16px;
+      padding-top: 14px;
+      border-top:1px solid rgba(255,255,255,.06);
+      font-weight:650;
+    }
+
+    /* Whats Floating */
+    .whats{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:90;
+      display:flex;
+      gap:10px;
+      align-items:center;
+      padding:12px 14px;
+      border-radius:999px;
+      background: rgba(0,0,0,.55);
+      border:1px solid rgba(255,255,255,.12);
+      box-shadow: 0 18px 45px rgba(0,0,0,.42);
+      backdrop-filter: blur(10px);
+      transition: transform .15s ease, border-color .15s ease;
+    }
+    .whats:hover{transform: translateY(-2px); border-color: rgba(34,197,94,.32)}
+    .waIcon{
+      width:38px; height:38px;
+      border-radius:999px;
+      display:grid; place-items:center;
+      background: linear-gradient(135deg, var(--green), var(--green2));
+      color:#07110b;
+      font-weight:1000;
+      flex: 0 0 auto;
+    }
+    .waText{display:flex; flex-direction:column; line-height:1.05; font-weight:1000; color:var(--text)}
+    .waText small{color: var(--muted); font-weight:800}
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero-wrap{grid-template-columns:1fr}
+      .grid-4{grid-template-columns: repeat(2, 1fr)}
+      .grid-3{grid-template-columns: repeat(2, 1fr)}
+      .grid-3b{grid-template-columns: 1fr}
+      .about{grid-template-columns: 1fr}
+      .foot{grid-template-columns: 1fr}
+    }
+    @media (max-width: 560px){
+      .menu{gap:4px}
+      .menu a{padding:9px 10px}
+      .grid-3{grid-template-columns: 1fr}
+      .feature-strip{grid-template-columns: 1fr}
+      .hero-main{padding:22px; min-height: 330px}
+      .waText{display:none}
+      footer{padding-bottom: 120px}
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#inicio" aria-label="Do Bem">
+        <span class="logo">DB</span>
+        <span>Do Bem</span>
+      </a>
+
+      <nav class="menu" aria-label="Menu">
+        <a href="#inicio">Início</a>
+        <a href="#cardapio">Cardápio</a>
+        <a href="#descontos">Descontos</a>
+        <a href="#sobre">Sobre</a>
+        <a href="#contato" class="cta-mini">Fale Conosco</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="inicio" class="hero">
+    <div class="container hero-wrap">
+
+      <section class="card hero-main" aria-label="Comida com Propósito">
+        <div class="kicker">
+          <span class="pill">🍲 Comida com Propósito</span>
+          <span class="pill">🥗 Marmitas Saudáveis</span>
+          <span class="pill">✨ Como Deus Criou</span>
+        </div>
+
+        <h1>Comida com Propósito</h1>
+        <p class="sub">
+          Alimentação balanceada, nutritiva e cheia de sabor. Feita com ingredientes selecionados,
+          sem industrializados, sem culpa.
+        </p>
+
+        <div class="hero-actions">
+          <button class="btn btn-primary" id="btnWhatsHero">📲 Peça pelo WhatsApp</button>
+          <a class="btn btn-ghost" href="#cardapio">🍱 Ver Cardápio</a>
+        </div>
+      </section>
+
+      <aside class="card hero-side" aria-label="Informações">
+        <div class="stat">
+          <div>
+            <b>4.8/5</b><br />
+            <span>+100 avaliações</span>
+          </div>
+          <div class="badge">⭐</div>
+        </div>
+
+        <div class="stat">
+          <div>
+            <b>Horário de funcionamento</b><br />
+            <span>Das 11hs às 14hs ou com hora marcada.</span>
+          </div>
+          <div class="badge">⏰</div>
+        </div>
+
+        <div class="feature-strip">
+          <div class="mini">
+            Marmitas Do Bem
+            <small>100% Natural</small>
+          </div>
+          <div class="mini">
+            Sem Industrializados
+            <small>Sem culpa</small>
+          </div>
+          <div class="mini">
+            Sem Glúten
+            <small>0% glúten</small>
+          </div>
+          <div class="mini">
+            Sem Lactose
+            <small>0% lactose</small>
+          </div>
+        </div>
+
+        <div class="stat">
+          <div>
+            <b>7</b><br />
+            <span>Variedades</span>
+          </div>
+          <div class="badge">🍽️</div>
+        </div>
+      </aside>
+
+    </div>
+  </main>
+
+  <section id="diferenciais">
+    <div class="container">
+      <div class="section-title">
+        <h2>Por que escolher a Do Bem?</h2>
+        <p>Nossos Diferenciais</p>
+      </div>
+
+      <div class="grid-4">
+        <div class="info">
+          <b>🥬 Ingredientes Selecionados</b>
+          <p>Sem industrializados, sem culpa, 7 sabores exclusivos, 0% glúten e lactose.</p>
+        </div>
+        <div class="info">
+          <b>🌿 Comida Natural</b>
+          <p>Comida com propósito, como Deus criou.</p>
+        </div>
+        <div class="info">
+          <b>💚 Marmitas Saudáveis</b>
+          <p>Nutrição balanceada para cuidar da sua saúde e bem-estar.</p>
+        </div>
+        <div class="info">
+          <b>🚚 Entrega em sua casa</b>
+          <p>Temos tele-entrega, sua refeição direto na sua casa ou trabalho.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="cardapio">
+    <div class="container">
+      <div class="section-title">
+        <h2>Nossas Especialidades</h2>
+        <p>
+          Marmitas preparadas diariamente com ingredientes frescos e selecionados.
+          Cada refeição é uma experiência de sabor e nutrição.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <!-- 1 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Frango Desfiado Cremoso</b>
+              <span class="tag">Rico em Potássio e Magnésio</span>
+            </div>
+            <p class="desc">Frango desfiado cremoso com purê de batata doce roxa e espaguete de abobrinha.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Frango Desfiado Cremoso">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 2 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1604908176997-125f25cc500f?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Strogonoff de Frango</b>
+              <span class="tag">Antioxidante</span>
+            </div>
+            <p class="desc">Strogonoff de frango com arroz negro e brócolis selado.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Strogonoff de Frango">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 3 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Panqueca de Espinafre</b>
+              <span class="tag">Rico em Ferro e Ácido Fólico</span>
+            </div>
+            <p class="desc">Panqueca de espinafre recheada com bolonhesa de carne, batata rústica e lâminas de cenoura.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Panqueca de Espinafre">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 4 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1523983302122-73e8696f7f0c?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Filé de Tilápia</b>
+              <span class="tag">Ômega 3</span>
+            </div>
+            <p class="desc">Filé de tilápia assada com crosta de coco e raspas de limão e arroz colorido.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Filé de Tilápia">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 5 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1604908177073-6c2a7d6c1c26?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Isca de Carne</b>
+              <span class="tag">Proteína de Alta Absorção</span>
+            </div>
+            <p class="desc">Aipim com ervas finas, iscas de patinho ao molho à moda Do Bem, brócolis e tomate cereja.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Isca de Carne">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 6 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Frango Xadrez</b>
+              <span class="tag">Rico em Fibras</span>
+            </div>
+            <p class="desc">Arroz vermelho e frango xadrez, sem molho shoyo.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Frango Xadrez">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- 7 -->
+        <article class="food">
+          <div class="food-img" style="background-image:url('https://images.unsplash.com/photo-1604908176997-125f25cc500f?auto=format&fit=crop&w=1600&q=80');"></div>
+          <div class="food-body">
+            <div class="food-top">
+              <b>Carne de Panela</b>
+              <span class="tag">Baixa Densidade Calórica</span>
+            </div>
+            <p class="desc">Carne de panela desfiada, seleta de vegetais e purê de abóbora cabotiá.</p>
+            <div class="food-actions">
+              <button class="btn btn-primary btn-small" data-item="Carne de Panela">Pedir</button>
+              <a class="btn btn-ghost btn-small" href="#descontos">Ver descontos</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="descontos">
+    <div class="container">
+      <div class="section-title">
+        <h2>Marmitas Do Bem — Economize Mais</h2>
+        <p>Descontos Progressivos — quanto mais marmitas você pedir, mais você economiza.</p>
+      </div>
+
+      <div class="grid-3b">
+        <div class="deal">
+          <div class="big">10</div>
+          <div class="off">5% OFF</div>
+          <p class="price">R$ 236,00</p>
+          <div class="per">R$ 23,60 cada</div>
+          <p>Perfeito para começar e experimentar os sabores.</p>
+        </div>
+
+        <div class="deal">
+          <div class="big">20</div>
+          <div class="off">10% OFF</div>
+          <p class="price">R$ 448,00</p>
+          <div class="per">R$ 22,40 cada</div>
+          <p>Ótimo custo-benefício para manter rotina saudável.</p>
+        </div>
+
+        <div class="deal popular">
+          <div class="ribbon">Mais Popular</div>
+          <div class="big">30</div>
+          <div class="off">15% OFF</div>
+          <p class="price">R$ 635,00</p>
+          <div class="per">R$ 21,17 cada</div>
+          <p>Melhor preço por marmita para clientes fiéis.</p>
+        </div>
+      </div>
+
+      <div style="margin-top:14px;">
+        <button class="btn btn-primary" id="btnEconomizar">💚 Quero Economizar</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="sobre">
+    <div class="container">
+      <div class="section-title">
+        <h2>Sobre Do Bem</h2>
+        <p>Nossa História — Quer comer com propósito?</p>
+      </div>
+
+      <div class="about">
+        <div class="card box">
+          <div class="kicker">
+            <span class="pill">📌 Nossa História</span>
+            <span class="pill">🍃 Comida de verdade</span>
+          </div>
+          <p class="sub" style="margin-top:10px;">
+            A Do Bem Marmitas nasceu da vontade de oferecer comida saudável, saborosa e natural.
+            Acreditamos que a alimentação vai muito além de nutrir o corpo — ela também alimenta a alma.
+            <br><br>
+            Cada marmita é preparada com ingredientes selecionados, com carinho e cozidos com amor, afeto e intenção.
+            Queremos que você sinta o sabor de uma comida totalmente natural, mas com a praticidade que o dia a dia exige.
+          </p>
+
+          <div class="kpis">
+            <div class="kpi">
+              <b>2</b>
+              <span>Anos de experiência</span>
+            </div>
+            <div class="kpi">
+              <b>✔</b>
+              <span>Qualidade garantida</span>
+            </div>
+            <div class="kpi">
+              <b>🌱</b>
+              <span>Ingredientes orgânicos</span>
+            </div>
+            <div class="kpi">
+              <b>🚚</b>
+              <span>Entregamos</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="card box">
+          <h3 style="margin:0; font-size:20px;">Pronto para comer com propósito?</h3>
+          <p class="sub" style="margin-top:10px;">
+            Faça seu pedido agora e viva na prática o sabor de uma comida feita natural, sem industrialização,
+            sem glúten e lactose.
+          </p>
+
+          <div style="margin-top:14px;">
+            <button class="btn btn-primary" id="btnPedidoAgora">✅ Fazer Pedido Agora</button>
+          </div>
+
+          <div style="margin-top:14px; color:var(--muted); font-weight:700;">
+            <b style="color:var(--text)">Dica:</b> envie no WhatsApp o combo (10/20/30) e seu endereço.
+          </div>
+
+          <div style="margin-top:14px;">
+            <div class="info">
+              <b>❤️ Feito com amor</b>
+              <p>Comida de verdade transforma vidas. “Mude o prato, mude a vida”.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="container" id="contato">
+    <div class="cta">
+      <div>
+        <h3>Do Bem Marmitas — Comida com Propósito</h3>
+        <p>Acreditamos que comida de verdade transforma vidas. MUDE O PRATO MUDE A VIDA COM A DO BEM.</p>
+      </div>
+      <button class="btn btn-primary" id="btnCtaFinal">📲 Pedir pelo WhatsApp</button>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container foot">
+      <div>
+        <b>Do Bem</b>
+        <div style="margin-top:8px; font-weight:750;">Comida com Propósito</div>
+        <div style="margin-top:10px;">
+          Acreditamos que comida de verdade transforma vidas. MUDE O PRATO MUDE A VIDA COM A DO BEM.
+        </div>
+      </div>
+
+      <div>
+        <b>Links Rápidos</b>
+        <div class="links" style="margin-top:10px;">
+          <a href="#inicio">Início</a>
+          <a href="#cardapio">Cardápio</a>
+          <a href="#descontos">Descontos</a>
+          <a href="#sobre">Sobre Nós</a>
+          <a href="#contato">Contato</a>
+        </div>
+      </div>
+
+      <div>
+        <b>Contato</b>
+        <div style="margin-top:10px; font-weight:750;">(51) 991338688</div>
+        <div style="margin-top:6px;">Vera Cruz, RS</div>
+        <div style="margin-top:6px;">Seg-Dom: 8h às 22h</div>
+        <div style="margin-top:10px;">
+          <b>Redes Sociais</b>
+          <div class="links" style="margin-top:8px;">
+            <a href="#">Instagram</a>
+            <a href="#">Facebook</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container fine">
+      © 2025 Do Bem Marmitas. Todos os direitos reservados. Comida com Propósito - Como Deus criou.
+    </div>
+  </footer>
+
+  <!-- WhatsApp flutuante -->
+  <a class="whats" id="whatsFloat" href="#" target="_blank" rel="noopener" aria-label="Pedir pelo WhatsApp">
+    <div class="waIcon" aria-hidden="true">WA</div>
+    <div class="waText">Pedir pelo Zap<small>Resposta rápida</small></div>
+  </a>
+
+  <script>
+    // Troque para o número correto (com DDI). Ex: 5551991338688
+    const WHATS_NUMBER = "5551991338688";
+
+    const makeLink = (msg) => `https://wa.me/${WHATS_NUMBER}?text=${encodeURIComponent(msg)}`;
+
+    const defaultMsg = "Olá! Quero fazer um pedido na Do Bem Marmitas 🍱💚\n" +
+      "Me envie as opções e como funcionam os descontos (10/20/30).";
+
+    const bindWhats = (elId, msg) => {
+      const el = document.getElementById(elId);
+      if(!el) return;
+      el.addEventListener("click", () => window.open(makeLink(msg), "_blank"));
+    };
+
+    // Hero + CTAs
+    bindWhats("btnWhatsHero", defaultMsg);
+    bindWhats("btnEconomizar", "Olá! Quero economizar com os descontos progressivos 💚\nTenho interesse no pacote: (10/20/30)\nEndereço: (digite aqui)");
+    bindWhats("btnPedidoAgora", "Olá! Quero fazer um pedido agora 🍱\nPacote: (10/20/30 ou unidade)\nEndereço: (digite aqui)\nPagamento: (Pix/Cartão)");
+    bindWhats("btnCtaFinal", defaultMsg);
+
+    // Pedir itens do cardápio
+    document.querySelectorAll("[data-item]").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const item = btn.getAttribute("data-item");
+        const msg = `Olá! Quero pedir: ${item} 🍱\n` +
+                    `Pacote: (unidade/10/20/30)\n` +
+                    `Endereço: (digite aqui)\nPagamento: (Pix/Cartão)`;
+        window.open(makeLink(msg), "_blank");
+      });
+    });
+
+    // Botão flutuante
+    document.getElementById("whatsFloat").href = makeLink(defaultMsg);
+  </script>
+</body>
+</html>
