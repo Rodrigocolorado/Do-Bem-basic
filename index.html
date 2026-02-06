@@ -5,16 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Do Bem Marmitas | Comida com Propósito</title>
   <meta name="description" content="Marmitas saudáveis 100% natural, sem industrializados, sem glúten e sem lactose. Peça pelo WhatsApp." />
-  <video class="auto-video"
-       muted
-       loop
-       playsinline
-       preload="none"
-       poster="thumb.jpg">
-       
-  <source data-src="videos/demo.mp4" type="video/mp4">
-</video>
-
+ 
   
   <style>
     :root{
@@ -111,13 +102,7 @@
       min-height:360px;
       background:
         linear-gradient(90deg, rgba(11,15,13,.94) 0%, rgba(11,15,13,.62) 45%, rgba(11,15,13,.22) 78%),
-        url("https://images.unsplash.com/photo-1543353071-873f17a7a088?auto=format&fit=crop&w=1600&q=80");
-      background-size:cover;
-      background-position:center;
-      display:flex;
-      flex-direction:column;
-      justify-content:center;
-      gap:12px;
+       
     }
     .kicker{
       display:flex; gap:10px; flex-wrap:wrap;
@@ -434,6 +419,39 @@
   </style>
 </head>
 
+<script>
+const videos = document.querySelectorAll("video");
+
+const observer = new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{
+    const video = entry.target;
+
+    if(entry.isIntersecting){
+
+      const source = video.querySelector("source");
+
+      if(source.dataset.src){
+        source.src = source.dataset.src;
+        video.load();
+      }
+
+      video.play();
+
+    }else{
+      video.pause();
+    }
+  });
+},{
+  threshold:0.6
+});
+
+videos.forEach(video=>{
+  observer.observe(video);
+});
+</script>
+
+
+  
 <body>
 
   <header>
@@ -457,6 +475,16 @@
     <div class="container hero-wrap">
 
       <section class="card hero-main" aria-label="Comida com Propósito">
+       
+       <video class="hero-video"
+              muted
+              loop
+              playsinline
+              preload="none"
+              poster="thumb.jpg">
+  <source data-src="videos/demo.mp4" type="video/mp4">
+</video>
+
         <div class="kicker">
           <span class="pill">🍲 Comida com Propósito</span>
           <span class="pill">🥗 Marmitas Saudáveis</span>
