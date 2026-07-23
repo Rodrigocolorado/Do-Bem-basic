@@ -1,13 +1,26 @@
+.auto-video{
+  width:100%;
+  height:auto;
+  object-fit:cover;
+  border-radius:12px;
+  display:block;
+}
+
 .hero-main{
   position:relative;
   overflow:hidden;
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#2F6B3E; /* Verde folha */
 }
 
 .hero-main::before{
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(47,107,62,.45);
+  background:rgba(47,107,62,.45); /* Camada verde sobre o vídeo */
   z-index:0;
 }
 
@@ -18,4 +31,10 @@
   height:100%;
   object-fit:cover;
   z-index:-1;
+}
+
+/* Mantém o conteúdo acima da camada verde */
+.hero-main > *{
+  position:relative;
+  z-index:1;
 }
