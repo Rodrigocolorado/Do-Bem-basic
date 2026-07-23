@@ -20,7 +20,7 @@
   content:"";
   position:absolute;
   inset:0;
-  background:rgba(47,107,62,.45); /* Camada verde sobre o vídeo */
+  background:transparent; /* Camada verde sobre o vídeo */
   z-index:0;
 }
 
